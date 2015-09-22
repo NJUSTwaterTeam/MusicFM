@@ -1,0 +1,26 @@
+{
+  "name": "Music_FM",
+  "description": "music online website",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.5.2",
+    "body-parser": "1.9.0",
+    "cookie-parser": "1.3.3",
+    "morgan": "1.3.1",
+    "serve-favicon": "2.1.5",
+    "debug": "2.1.0",
+    "ejs": "1.0.0",
+    "gravatar": "1.1.0",
+    "marked": "0.3.2",
+    "moment": "2.8.3",
+    "mongodb": "1.4.15",
+    "express-session": "1.9.1",
+    "connect-flash": "0.1.1",
+    "connect-mongo": "0.4.1",
+    "generic-pool": "2.1.1"
+  },
+  "devDependencies": {
+    "hbs": "^3.1.1"
+  }
+}

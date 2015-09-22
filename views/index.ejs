@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title %></title>
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+	<h1><%= title %></h1>
+	<p>Welcome to <%= title %></p>
+
+	<nav>
+		<span><a title="主页" href="/">home</a></span>
+		<span><a title="登录" href="/login">login</a></span>
+		<span><a title="注册" href="/reg">register</a></span>
+	</nav>
+
+
+	<% if (success) { %>
+	<div><%= success %></div>
+	<% } %>
+
+	<% if (error) { %>
+	<div><%= error %></div>
+	<% } %>
+
+</body>
+</html>
