@@ -42,3 +42,8 @@ span.mygreen{
 	height:200px;
 	width:100px;
 }
+.comment div{
+	background:url(img/comment.jpg);
+	background-size:100% 100%;
+	background-repeat:no-repeat;
+}
