@@ -1,3 +1,4 @@
+
 var app = angular.module('MusicFM', [], function(){});
 	app.controller('music',function($scope , $timeout){
 		var currentIndex = 0;
