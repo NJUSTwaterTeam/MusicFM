@@ -1,0 +1,44 @@
+
+.my-navigation{
+	background-color: white;
+	font-size: 150%;
+}
+.my-navigation span{
+	font-size: 200%;
+	margin-top: 5%;
+	color: rgb(169,208,107);
+}
+.my-navigation img{
+	margin-top: 7%;
+}
+.my-navigation li{
+	margin-top: 6%;
+	margin-right: 4%;
+}
+
+span.music-show{
+	margin-top: 10%;
+	color:lightgrey;
+}
+.music-show:hover{
+	cursor: pointer;
+}
+span.mygreen{
+	color:rgb(169,208,107);
+}
+
+.my-navigation a:link {color: black}
+.my-navigation a:visited {color: black}
+.my-navigation a:hover {
+	color: rgb( 169,208,107);text-decoration: none
+}
+.my-navigation a:active {color: orange}
+
+
+
+
+
+.comment{
+	height:200px;
+	width:100px;
+}
