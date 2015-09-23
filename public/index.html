@@ -1,69 +1,111 @@
-<!-- index.html -->
-<!doctype html>
-
-<!-- ASSIGN OUR ANGULAR MODULE -->
-<html ng-app="scotchTodo">
+<html ng-app='MusicFM'>
 <head>
-    <!-- META -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
-
-    <title>Node/Angular Todo App</title>
-
-    <!-- SCROLLS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
-    <style>
-        html                    { overflow-y:scroll; }
-        body                    { padding-top:50px; }
-        #todo-list              { margin-bottom:30px; }
-    </style>
-
-    <!-- SPELLS -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
-    <script src="core.js"></script>
-
+	<title>MusicFM</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <link href="css/header.css" rel="stylesheet">
+    <link href="css/music.css" rel="stylesheet">
 </head>
-<!-- SET THE CONTROLLER AND GET ALL TODOS -->
-<body ng-controller="mainController">
-    <div class="container">
+<body style="background-image: url(img/bk4.jpg);">
+	
+	<!-- header -->
+	<div class="container my-navigation" style="opacity:0.7">
+			<div class="row"  style="height:15%;">
+				<div class="col-md-4" >
+					<span class="glyphicon glyphicon-grain"
+						>MusicFM</span>
+				</div>
+				<div class="col-md-6">
+					<ul class="list-inline">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Read</a></li>
+						<li><a href="#">Diagram</a></li>
+						<li><a href="#">Diagram</a></li>
+					</ul>
+				</div>
+				<div class="col-md-2 ">
+					<span class="glyphicon glyphicon-stats
+						music-show" aria-hidden="true"
+						id="showmusic"></span>
+				</div>
+			</div>
+			<script>
+				$("#showmusic").mouseover(function(){
+					$("#showmusic").toggleClass("mygreen");
+					$("#music-panel").toggle();
+				});
+			</script>
+	</div>
+	 
+	<!--music -->
+	
+	<div class="music-panel"
+		style="display:none" id="music-panel"
+	ng-controller="music"> 
+		<div class="music-panel-header">
+			<img src="music/img/{{songname}}.jpg"/>
+		</div>
+		<div class="music-panel-info">
+			<div class="music-info-song">{{songname}}</div>
+			<div class="music-info-singer">{{author}}</div>
+			<div class="music-info-album">《JUAN》</div>
+		</div>
+		<ul class="music-controls">
+			<li onclick = "play()">
+				<span class="glyphicon glyphicon-play" aria-hidden="true" ng-show='audio.paused'></span>
+				<span class="glyphicon glyphicon-pause" aria-hidden="true" ng-show='!audio.paused'></span>
+			</li>
+			<li onclick = "next()">
+				<span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span>
+			</li>
+		</ul>
+		
+		<div class="music-progress" onclick="setprogress(event,this)">
+			<div class="music-progress-current" 
+				style="width:{{audio.currentTime*100/audio.duration}}%" ></div>
+		</div>
+		<div class="music-progress-time">
+			{{currentTime}}/{{duration}}
+		</div>
+		<div class="music-volume">
+			<div>
+				<span class="glyphicon glyphicon-volume-up" ng-click="mute()"
+					ng-show="!audio.muted"></span>
+				<span class="glyphicon glyphicon-volume-off"ng-click="mute()"
+					ng-show="audio.muted"></span>
+			</div>
+			<div class="music-volume-progress" onclick="setvolume(event,this)">
+				<div class="music-volume-now" style="width:{{audio.volume*100}}%"></div>
+			</div>
+		</div>
+	</div>
 
-        <!-- HEADER AND TODO COUNT -->
-        <div class="jumbotron text-center">
-            <h1>I'm a Todo-aholic <span class="label label-info">{{ todos.length }}</span></h1>
-        </div>
+	<!-- comment -->
+	<div class="comment" style="background:url(img/comment.jpg);background-size:100% 100%;">
+		<li>
+		</li>
+	</div>
+	
+	<br/>
+	<br/>
+	<br/>
+	<br/>
 
-        <!-- TODO LIST -->
-        <div id="todo-list" class="row">
-            <div class="col-sm-4 col-sm-offset-4">
-
-                <!-- LOOP OVER THE TODOS IN $scope.todos -->
-                <div class="checkbox" ng-repeat="todo in todos">
-                    <label>
-                        <input type="checkbox" ng-click=""> {{ todo.commenttext }}
-                    </label>
+	<!-- footer -->
+	<footer class="col-md-12">
+		<div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>© 2015    |   Provided by foolifish07 
+                    	| Enjoy it!</p>
                 </div>
-
             </div>
-        </div>
+        </div> 
+	</footer>
 
-        <!-- FORM TO CREATE TODOS -->
-        <div id="todo-form" class="row">
-            <div class="col-sm-8 col-sm-offset-2 text-center">
-                <form>
-                    <div class="form-group">
+<!-- <script src="music/list.js"></script> -->
+<script src="index.js"></script>
 
-                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-                        <input type="text" class="form-control input-lg text-center" placeholder="I want to buy a puppy that will love me forever" ng-model="formData.text">
-                    </div>
-
-                    <!-- createToDo() WILL CREATE NEW TODOS -->
-                    <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
-                </form>
-            </div>
-        </div>
-
-    </div>
-
-</body>
-</html>

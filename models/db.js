@@ -97,7 +97,7 @@ exports.mcfind = function(unm, cb) {
 	});
 	query.exec(function(err, ret) {
 		if (err) return handleError(err);
-		console.log(ret.song);
+		console.log(ret);
 		//console.log('%s %s is a %s.', ret.retname, ret.password, ret.email); // Space Ghost is a talk show host.
 		cb(null, ret);
 		// cb(null, user);

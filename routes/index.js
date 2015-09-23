@@ -27,6 +27,18 @@ function checkNotLogin(req, res, next) {
 }
 
 module.exports = function(app) {
+  app.get('/json', function(req, res) {
+      console.log("tod");
+        // use mongoose to get all todos in the database
+        db.mcfind("Test1" ,function(err, todos) {
+            // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+            if (err)
+                res.send(err)
+            res.json(todos); // return all todos in JSON format
+        });
+    });
+
+
    app.get('/api/todos', function(req, res) {
       console.log("tod");
         // use mongoose to get all todos in the database
@@ -41,8 +53,8 @@ module.exports = function(app) {
     // create todo and send back all todos after creation
     app.post('/api/todos', function(req, res) {
         // create a todo, information comes from AJAX request from Angular
-        console.log(req.body.text)
-        db.csongfind(req.body.text ,function(err, todos) {
+        console.log(req.body.text);
+        db.mcfind(req.body.text ,function(err, todos) {
             // if there is an error retrieving, send the error. nothing after res.send(err) will execute
             if (err)
                 res.send(err)
