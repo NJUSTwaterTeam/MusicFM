@@ -1,4 +1,3 @@
-
 var mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost:27017/blog");
 
@@ -33,7 +32,21 @@ var userEntity = new userModel({
 //     console.log('meow');
 // });
 //打印这个实体的名字看看
-console.log(userEntity.username); //Krouky
+// console.log(userEntity.username); //Krouky
+var musicSchema = new Schema({
+	collectionname: String,
+	collectionid: Number,
+	collectiontext: String,
+	song: [{
+		songid: Number,
+		songname: String,
+		url: String,
+		author: String
+	}]
+
+});
+var musicModel = mongoose.model('music', musicSchema);
+
 
 exports.connect = function(request, response) {
 	mongoose.connect("mongodb://localhost:27017/blog", function(e) {
@@ -56,22 +69,68 @@ exports.usersave = function(unm, upd, uem) {
 }
 
 
-exports.userfind = function(unm,cb) {
-	console.log(unm+"test");
-	var query = userModel.findOne({'username': unm});
-	query.exec(function(err, user) {
+exports.userfind = function(unm, cb) {
+		console.log(unm + "test");
+		var query = userModel.findOne({
+			'username': unm
+		});
+		query.exec(function(err, user) {
+			if (err) return handleError(err);
+			console.log(user);
+			console.log('%s %s is a %s.', user.username, user.password, user.email); // Space Ghost is a talk show host.
+			cb(null, user);
+			// cb(null, user);
+		});
+
+		// return userModel.findOne({
+		// 	'username': unm
+		// },function(err, user) {
+		// 	if (err) return handleError(err);
+		// 	console.log('%s %s is a %s.', user.username, user.password, user.email); // Space Ghost is a talk show host.
+		// 	// cb(null, user);
+		// });
+	}
+	//专辑查询
+exports.mcfind = function(unm, cb) {
+	var query = musicModel.findOne({
+		'collectionname': unm
+	});
+	query.exec(function(err, ret) {
 		if (err) return handleError(err);
-		console.log(user);
-		console.log('%s %s is a %s.', user.username, user.password, user.email); // Space Ghost is a talk show host.
-		cb(null, user);
+		console.log(ret.song);
+		//console.log('%s %s is a %s.', ret.retname, ret.password, ret.email); // Space Ghost is a talk show host.
+		cb(null, ret);
 		// cb(null, user);
 	});
+}
 
-	// return userModel.findOne({
-	// 	'username': unm
-	// },function(err, user) {
-	// 	if (err) return handleError(err);
-	// 	console.log('%s %s is a %s.', user.username, user.password, user.email); // Space Ghost is a talk show host.
-	// 	// cb(null, user);
-	// });
+
+var Todo = mongoose.model('text', {
+	text: String
+});
+
+exports.find = function(cb) {
+	var query = Todo.find({
+
+	});
+	query.exec(function(err, ret) {
+		if (err) return handleError(err);
+		//console.log(ret.song);
+		//console.log('%s %s is a %s.', ret.retname, ret.password, ret.email); // Space Ghost is a talk show host.
+		cb(null, ret);
+		// cb(null, user);
+	});
+}
+
+exports.create = function(num, cb) {
+	var newc = new Todo({
+		text: num.text,
+	});
+	newc.save(function(err) {
+	    if (err) {
+	        console.log('保存失败')
+	        return;
+	    }
+	    console.log('meow');
+	});
 }
