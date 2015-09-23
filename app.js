@@ -47,7 +47,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 route(app);
 app.get("*", function(req, res) {
-	res.sendFile(__dirname + 　'/public/article.html');
+	res.sendFile(__dirname + 　'/public/index.html');
 });
 
 app.listen(process.env.PORT || config.app, function() {

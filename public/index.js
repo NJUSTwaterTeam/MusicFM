@@ -1,24 +1,28 @@
 
-// var playlist;
+
 
 var app = angular.module('MusicFM', [], function(){});
-	app.controller('music',function($scope , $timeout){
+	console.log("index.js ok");
+	app.controller('music',function($scope , $timeout,$http){
 		var currentIndex = 0;
 		$scope.currentTime = $scope.duration = '0';
 		$scope.songname = $scope.author = $scope.album = '0';
 
 		$scope.audio = document.createElement('audio');
 		var audio = $scope.audio;
-		/*
+		var playlist;
 		$http({
 		      method: 'GET',
 		      url: '/json'
     	}).success(function(response, status, headers, config){
         	console.log(response);
+        	playlist = response.song;
+        	console.log(playlist);
+        	setInfo();
     	});
-		*/
+		
 
-		setInfo();
+		
 		audio.volume = 0.5;
 
 		// listener
@@ -88,7 +92,7 @@ var app = angular.module('MusicFM', [], function(){});
 		}
 		function setInfo(){
 			//alert(playlist.length);
-			$scope.songname = playlist[currentIndex].name;
+			$scope.songname = playlist[currentIndex].songname;
 			$scope.author = playlist[currentIndex].author;
 			audio.src = playlist[currentIndex].url;
 		}
