@@ -1,4 +1,4 @@
-var playlist;
+//var playlist;
 var app = angular.module('MusicFM', [], function(){});
 	app.controller('music',function($scope , $timeout){
 		var currentIndex = 0;
@@ -7,14 +7,14 @@ var app = angular.module('MusicFM', [], function(){});
 
 		$scope.audio = document.createElement('audio');
 		var audio = $scope.audio;
-		
-		var p = $http({
+		/*
+		$http({
 		      method: 'GET',
 		      url: '/json'
+    	}).success(function(response, status, headers, config){
+        	console.log(response);
     	});
-    	p.success(function(response, status, headers, config){
-        	playlist = response.data;
-    	});
+		*/
 
 		setInfo();
 		audio.volume = 0.5;
