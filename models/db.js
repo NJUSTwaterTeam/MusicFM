@@ -104,6 +104,25 @@ exports.mcfind = function(unm, cb) {
 	});
 }
 
+var commentSchema = new Schema({
+	commentid: Number,
+	commentpreid: Number,
+	commenttext: String,
+	commentuser: String,
+	commentsong: Number,
+});
+var commentModel = mongoose.model('comment', commentSchema);
+//根据音乐id找所对应的评论，返回json
+exports.csongfind = function(snm, cb){
+	var query = commentModel.find({
+		commentsong: snm
+	});
+	query.exec(function(err, ret) {
+		if (err) return handleError(err);
+		cb(null, ret);
+	});
+}
+
 
 var Todo = mongoose.model('text', {
 	text: String
