@@ -49,4 +49,17 @@ div.comment{
 	top: 50px;
 	left: 60%;
 	box-shadow: 0px 0px 50px;
+
+	padding-top: 1%;
+}
+.comment-body{
+	height: 90%;
+	width: 90%;
+	list-style-type: none;
+}
+.comment-body li{
+	height: 10%;
+	width: 100%;
+	font-size: 150%;
+	border-style: solid solid solid none;
 }
