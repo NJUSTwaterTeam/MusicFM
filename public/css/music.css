@@ -1,78 +1,110 @@
+.all {
+	height: 80%;
+	width: 120%;
+	position: absolute;
+	left: 5%;
+
+	top: 5%;
+	background: ; 
+	overflow: hidden;
+}
+
+
+
+
 .music-panel{
-	background-color: white;
-	height: 400px;
-	width: 280px;
-	position: relative;
-	z-index: 10;
-	top: 50px;
-	left: 300px;
+	background-color: ;
+	height: 100%;
+	width:  70%;
+	position: relative;	
+	color: lightgreen;
+	float: left;
+
 	box-shadow: 0px 0px 50px grey;
 }
 .music-panel span:hover{	
 	color: green;
 }
 
-.music-panel-header{
-	width:100%;
-	height:50%;
-	background-color: white;
+.music-panel-left{
+	width: 40%;
+	height: 100%;
+	float:left;
+	
+	background-color: ;
 }
-.music-panel-header img{
+.music-panel-left img{
 	margin:0px;
 	height:100%;
 	width: 100%;
 }
+
+.music-panel-right{
+	width: 60%;
+	height: 100%;
+	float:left;
+	
+	background-color: rgba(0,0,0,0.5);
+}
+
 .music-panel-info{
 	width:100%;
-	height:20%;
-	background-color: white;
+	height:50%;
+	float : left;
+	background-color: ;
+	position: relative;
 
-	border-top-style: solid;
-	border-top-width:3px;
-	border-top-color: rgb( 169,208,107);
+	background-color: ;
 }
 .music-info-song{
-	width:100%; height:40%;
+	width:60%; height:22%;
 	text-align: center;
 	font-size: 200%;
 }
 .music-info-singer{
-	width:100%; height:30%;
+	width:60%; height:9%;
 	text-align: center;
 	font-size: 100%;
-	color: #A1A1A1;
 }
 .music-info-album{
-	width:100%; height:30%;
+	width:60%; height:9%;
 	text-align: center;
 	font-size: 100%;
-	color:#A1A1A1;
+}
+.music-info-description{
+	width:70%; height:60%;
+	text-align: left;
+	font-size: 100%;
+	padding:2% ;
 }
 
 .music-controls{
 	width: 100%;
-	height: 15%;
+	height: 10%;
 	padding:0;
-	margin:0;
+	margin-top : 1%;
+	float: left;
 	
-	background-color: white;
+	background-color: ;
+	opacity: 0.8;
+
 	list-style-type:none
 }
-.music-controls li{
+.music-controls div{
 	width: 18%;
-	height: 80%;
+	height: 100%;
 	margin-top:3%;
 	margin-left:3%;
 	padding:3px;
 	float:left;
 	
-	background-color: white;
+	background-color: ;
 }
-.music-controls li span{	
+.music-controls div span{	
 	width:100%; height:100%;
 	margin:0px; padding:0px;
 	border:10px;
-	background-color: white;
+	background-color: ;
 	border-color: red;
 
 	font-size: 250%;
@@ -83,56 +115,62 @@
 .music-progress{
 	width: 100%;
 	height: 2%;
-	margin-top:0px;
+	margin-top: 4%;
+	float : left;
 	
 	background-color: lightgrey;
 	border-radius: 5px;
 	cursor:pointer;
 }
 .music-progress-current{
-	height:100%;
 	width:50%;
+	height:100%;
 	background-color : rgb( 169,208,107);
 	border-radius: 5px;
 }
 
 .music-progress-time{
-	height: 13%;
-	width: 45%;
+	width: 50%;
+	height: 15%;
 	padding: 3%;
-	font-size:150%;
+	font-size:200%;
+	float : left;
 	
-	position: absolute;
-	
-	background-color: white;
+	position: relative;
+	background-color: ;
 }
+
+
 .music-volume{
-	height: 13%;
-	width: 55%;
+	width: 50%;
+	height: 15%;
 	
+	float: left;
 	padding:0px;
-	margin-left:45%;
+	margin-left:0%;
 	margin-top:0px;
-	background-color: white;
+	background-color: ;
 }
 .music-volume span{
-	font-size: 150%;
-	background-color: white;
+	font-size: 200%;
+	background-color: ;
 	color: rgb( 169,208,107);
-	margin-left: 0%;
-	margin-top: 8%;
+	margin-left: 2%;
+	margin-top: 10%;
 	height:40%;
-	width:16%;
+	width:12%;
+	float: left;
 	cursor: pointer;
 }
 .music-volume-progress{
 	background-color: lightgrey;
 
-	position: absolute;
-	left:55%; top: 91.5%;
-	
-	width:42%;
-	height:2%;
+	position: relative;
+	float: left;
+	margin-left: 0%;
+	margin-top: 13%;
+	width: 80%;
+	height:10%;
 	border-radius: 5px;
 	cursor: pointer;
 }
@@ -141,4 +179,123 @@
 	width: 50%;
 	height:100%;	
 	border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.comment{
+	height:100%;
+	width: 20%;
+	float : left;
+	left: 10%;
+
+	background-color: rgba(255,255,255,0.5);
+	position: relative;
+	box-shadow: 0px 0px 50px;
+}
+.comment-body{
+	height: 65%;
+	width: 95%;
+	list-style-type: none;
+	overflow: auto;
+}
+.comment-body li{
+	width: 100%;
+	border-style: none none solid none;
+}
+.comment-body-context{ 
+	width:100%; 
+	font-size:150%; 
+	text-align:left
+}
+.comment-body-username{
+	width:100%; 
+	font-size:100%; 
+	text-align:right
+}
+.comment-body p{
+	white-space: normal;
+	word-wrap: break-word;
+}
+.comment-body li:hover {
+	color: green;text-decoration: none;
+	cursor: pointer;
+}
+.comment-body li:active {color: orange}
+
+.comment-submit{
+	margin-left:10%; 
+	width:80%;
+}
+.comment-submit-send{
+	right: 0px;
+	float: right;
+	color: grey;
+	font-size: 200%;
+}
+.comment-submit-send:hover{
+	color: green;
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes zou{
+  	from { right: 0px }
+  	to { right: 500px }
+}
+div.chevron{
+	height: 10%; width:50px;
+	background-color: ;
+	position: absolute;
+	right: 0px; 
+	top: 40%;
+	z-index: 100;
+
+	text-align: center;
+	font-size: 400%;
+	color: grey;
+	opacity: 0.5;    
+}
+.chevron div:hover{
+	color: lightgreen;
+	cursor: pointer;
+}
+.dong{
+	animation: zou 1s linear forwards;
+	animation-play-state: paused;
 }
