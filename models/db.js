@@ -41,7 +41,8 @@ var musicSchema = new Schema({
 		songid: Number,
 		songname: String,
 		url: String,
-		author: String
+		author: String,
+		descriptions: String 
 	}]
 
 });
@@ -93,15 +94,20 @@ exports.userfind = function(unm, cb) {
 	//专辑查询
 exports.mcfind = function(unm, cb) {
 	var query = musicModel.findOne({
-		'collectionname': unm
+		'collectionid': unm
 	});
 	query.exec(function(err, ret) {
 		if (err) return handleError(err);
-		console.log(ret);
+		console.log("db finder" + ret);
 		//console.log('%s %s is a %s.', ret.retname, ret.password, ret.email); // Space Ghost is a talk show host.
 		cb(null, ret);
 		// cb(null, user);
 	});
+}
+exports.mcinsert = function(unm, cb) {
+	var Newcomment = new commentModel(unm);
+	Newcomment.save(cb);
+	
 }
 
 var commentSchema = new Schema({
@@ -115,7 +121,7 @@ var commentModel = mongoose.model('comment', commentSchema);
 //根据音乐id找所对应的评论，返回json
 exports.csongfind = function(snm, cb){
 	var query = commentModel.find({
-		commentsong: snm
+		// commentsong: snm
 	});
 	query.exec(function(err, ret) {
 		if (err) return handleError(err);

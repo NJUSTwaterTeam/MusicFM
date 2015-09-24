@@ -22,8 +22,8 @@
 				<div class="music-panel-info">
 					<div class="music-info-song">{{songname}}</div>
 					<div class="music-info-singer">{{author}}</div>
-					<div class="music-info-album">《JUAN》</div>
-					<div class="music-info-description">《JUAN》</div>
+					<div class="music-info-album">{{album}}</div>
+					<div class="music-info-description">{{descriptions}}</div>
 				</div>
 				<div class="music-controls">
 					<div onclick = "play()">
@@ -40,7 +40,7 @@
 						style="width:{{audio.currentTime*100/audio.duration}}%" ></div>
 				</div>
 				<div class="music-progress-time">
-					{{currentTime}}/{{duration}}
+					{{currentTime}}/{{duration}} {{currentIndex}}
 				</div>
 				<div class="music-volume">
 					<div>
@@ -63,9 +63,11 @@
 			ng-controller="comment">
 			<p style="font-size:250%;width:100%;height:10%; text-align:center"> COMMENT </p>
 			<ul class="comment-body" style="overflow:auto;" >
-				<li ng-repeat="item in commentlist">
-					<div class="comment-body-context"> <p>{{item.commenttext}}<p> </div>
-					<div class="comment-body-username"> <p>{{item.commentuser}}<p> <div> 
+				<li ng-repeat="item in commentlist" ng-if = "item.commentsong == data.cur">
+					<div>
+						<div class="comment-body-context"> <p>{{item.commenttext}}<p> </div>
+						<div class="comment-body-username"> <p>{{item.commentuser}}<p> <div>
+					</div> 
 				</li>
 			</ul>
 			<div class="comment-submit" >

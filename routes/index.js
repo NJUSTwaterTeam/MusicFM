@@ -28,75 +28,106 @@ function checkNotLogin(req, res, next) {
 
 module.exports = function(app) {
   app.get('/json', function(req, res) {
-      console.log("tod");
-        // use mongoose to get all todos in the database
-        db.mcfind("Test1" ,function(err, todos) {
-            // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-            if (err)
-                res.send(err)
-            res.json(todos); // return all todos in JSON format
-        });
+    console.log("tod");
+    // use mongoose to get all todos in the database
+    db.mcfind(1, function(err, todos) {
+      // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+      if (err)
+        res.send(err)
+      res.json(todos); // return all todos in JSON format
     });
+  });
 
-
-   app.get('/api/todos', function(req, res) {
-      console.log("tod");
-        // use mongoose to get all todos in the database
-        db.csongfind(1 ,function(err, todos) {
-            // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-            if (err)
-                res.send(err)
-            res.json(todos); // return all todos in JSON format
-        });
+  app.get('/com', function(req, res) {
+    console.log("com");
+    // use mongoose to get all todos in the database
+    db.csongfind(1, function(err, todos) {
+      // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+      if (err)
+        res.send(err)
+      res.json(todos); // return all todos in JSON format
     });
+  });
 
-    // create todo and send back all todos after creation
-    app.post('/api/todos', function(req, res) {
-        // create a todo, information comes from AJAX request from Angular
-        console.log(req.body.text);
-        db.mcfind(req.body.text ,function(err, todos) {
-            // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-            if (err)
-                res.send(err)
-            res.json(todos); // return all todos in JSON format
-        });
-        // db.create({
-        //     text : req.body.text,
-        //     done : false
-        // }, function(err, todo) {
-        //     if (err)
-        //         res.send(err);
-        //     // get and return all the todos after you create another
-        //     db.find(function(err, todos) {
-        //         if (err)
-        //             res.send(err)
-        //         res.json(todos);
-        //     });
-        // });
-
+  app.post('/addcomment', function(req, res) {
+    // create a todo, information comes from AJAX request from Angular
+    console.log(req.body);
+    db.mcinsert(req.body, function(err, todos) {
+      // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+      if (err)
+        res.send(err)
+      console.log(todos);
     });
-
-    // delete a todo
-    app.delete('/api/todos/:todo_id', function(req, res) {
-        // db.remove({
-        //     _id : req.params.todo_id
-        // }, function(err, todo) {
-        //     if (err)
-        //         res.send(err);
-
-        //     // get and return all the todos after you create another
-        //     db.find(function(err, todos) {
-        //         if (err)
-        //             res.send(err)
-        //         res.json(todos);
-        //     });
-        // });
+    db.csongfind(1, function(err, todos) {
+      // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+      if (err)
+        res.send(err)
+      console.log(todos);
+      console.log("sss");
+      res.json(todos); // return all todos in JSON format
     });
+  });
+
+  app.get('/api/todos', function(req, res) {
+    console.log("tod");
+    // use mongoose to get all todos in the database
+    db.mcfind(1, function(err, todos) {
+      // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+      if (err)
+        res.send(err)
+      ;
+      res.json(todos); // return all todos in JSON format
+    });
+  });
+
+  // create todo and send back all todos after creation
+  app.post('/api/todos', function(req, res) {
+    // create a todo, information comes from AJAX request from Angular
+    console.log(req.body.text);
+    db.mcfind(req.body.text, function(err, todos) {
+      // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+      if (err)
+        res.send(err)
+
+      res.json(todos); // return all todos in JSON format
+    });
+    // db.create({
+    //     text : req.body.text,
+    //     done : false
+    // }, function(err, todo) {
+    //     if (err)
+    //         res.send(err);
+    //     // get and return all the todos after you create another
+    //     db.find(function(err, todos) {
+    //         if (err)
+    //             res.send(err)
+    //         res.json(todos);
+    //     });
+    // });
+
+  });
+
+  // delete a todo
+  app.delete('/api/todos/:todo_id', function(req, res) {
+    // db.remove({
+    //     _id : req.params.todo_id
+    // }, function(err, todo) {
+    //     if (err)
+    //         res.send(err);
+
+    //     // get and return all the todos after you create another
+    //     db.find(function(err, todos) {
+    //         if (err)
+    //             res.send(err)
+    //         res.json(todos);
+    //     });
+    // });
+  });
 
   // app.get('*', function(req, res) {
   //   res.sendfile('./public/index.html');
   // })
-  
+
   // /app.get("/connect", db.connect);
 
   // app.get('/', function(req, res, next) {
