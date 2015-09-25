@@ -7,8 +7,15 @@
 	<script src="js/bootstrap.min.js"></script>
     <script src="js/angular.min.js"></script>
     <link href="css/music.css" rel="stylesheet">
+    <style type="text/css">
+    	*{
+    		font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, STHeiti, 'Microsoft Yahei', SimSun, sans-serif;
+    		color:black;
+    	}
+
+    </style>
 </head>
-<body style="background-image: url(img/bk4.jpg);overflow:hidden "  >
+<body style="background-color: F6F6F6;overflow:hidden "  >
 	 
 	<div id="container" class="all dong"  >
 
@@ -70,12 +77,14 @@
 					</div> 
 				</li>
 			</ul>
-			<div class="comment-submit" >
-				<input type="text" style="width:40%" placeholder="your name"  
+			<div class="form-group comment-submit" >
+				<div class="row">
+				<input class="col-md-9 form-control" type="text" style="width:40%;margin-left:6%" placeholder="your name"  
 					ng-model="username"/>
-				<div class="comment-submit-send" onclick="submit()">
-					<div class="glyphicon glyphicon-ok" ></div></div>
-				<textarea rows="2%" cols="35%" style="margin-top: 4%" 
+				<div class="col-md-3 comment-submit-send" onclick="submit()">
+					<div class=" glyphicon glyphicon-ok" ></div></div>
+				</div>
+				<textarea class="form-control" rows="2%" cols="35%" style="margin-top: 4%" 
 					placeholder="comment" ng-model="context" ></textarea>
 			</div>
 		</div>
@@ -95,7 +104,7 @@
 		<div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <p>© 2015    |   Provided by foolifish07 
+                    <p>© 2015    |   Provided by <a href="https://github.com/NJUSTwaterTeam/MusicFM">NJUSTwaterTeam</a>
                     	| Enjoy it!</p>
                 </div>
             </div>
