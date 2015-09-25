@@ -29,7 +29,7 @@ var playlist = [{
 }];
 var currentIndex = 0;
 var app = angular.module('MusicFM', [], function() {});
-console.log("index.js ok");
+// console.log("index.js ok");
 app.factory('Data', function() {
 	return {
 		cur: 0
@@ -48,10 +48,10 @@ app.controller('music', function($scope, $timeout, $http, Data) {
 		method: 'GET',
 		url: '/json'
 	}).success(function(response, status, headers, config) {
-		console.log(response);
+		// console.log(response);
 		playlist = response.song;
 		albumname = response.collectionname;
-		console.log(playlist);
+		// console.log(playlist);
 		setInfo();
 	});
 
@@ -184,7 +184,7 @@ app.controller('comment', function($scope, $http, $timeout, Data) {
 	}).success(function(response, status, headers, config) {
 		//console.log(response);
 		commentlist = response;
-		console.log(commentlist);
+		// console.log(commentlist);
 		$scope.commentlist = commentlist;
 		for (var i = 0; i < commentlist.length; i++) {
 			if (maxcid < commentlist[i].commentid) {
@@ -196,7 +196,7 @@ app.controller('comment', function($scope, $http, $timeout, Data) {
 
 	// $scope.commentlist = commentlist;
 	$scope.currentIndex = currentIndex;
-	console.log(currentIndex);
+	// console.log(currentIndex);
 	submit = function() {
 		var formData = {
 			"commentid": maxcid + 1,
@@ -207,20 +207,20 @@ app.controller('comment', function($scope, $http, $timeout, Data) {
 		}
 		maxcid++;
 		commentlist.push(formData);
-		console.log(commentlist);
+		// console.log(commentlist);
 		$http.post('/addcomment', formData)
 			.success(function(formData) {
 				$scope.context = "";
 				$scope.username = "";
 				$scope.commentlist = formData;
-				console.log(formData);
+				// console.log(formData);
 				$http({
 					method: 'GET',
 					url: '/com'
 				}).success(function(response, status, headers, config) {
 					//console.log(response);
 					commentlist = response;
-					console.log(commentlist);
+					// console.log(commentlist);
 					$scope.commentlist = commentlist;
 					for (var i = 0; i < commentlist.length; i++) {
 						if (maxcid < commentlist[i].commentid) {

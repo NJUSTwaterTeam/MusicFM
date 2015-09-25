@@ -1,6 +1,6 @@
-/music/music/media/
+/music/
 /public/music/media/
-/public/music/img/
+#/public/music/img/
 # Logs
 logs
 *.log

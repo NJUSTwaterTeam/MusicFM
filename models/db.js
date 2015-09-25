@@ -56,7 +56,7 @@ exports.connect = function(request, response) {
 	});
 }
 exports.con = function() {
-	console.log(userEntity.password);
+	// console.log(userEntity.password);
 	// response.send("connect yes!");
 }
 
@@ -71,14 +71,14 @@ exports.usersave = function(unm, upd, uem) {
 
 
 exports.userfind = function(unm, cb) {
-		console.log(unm + "test");
+		// console.log(unm + "test");
 		var query = userModel.findOne({
 			'username': unm
 		});
 		query.exec(function(err, user) {
 			if (err) return handleError(err);
-			console.log(user);
-			console.log('%s %s is a %s.', user.username, user.password, user.email); // Space Ghost is a talk show host.
+			// console.log(user);
+			// console.log('%s %s is a %s.', user.username, user.password, user.email); // Space Ghost is a talk show host.
 			cb(null, user);
 			// cb(null, user);
 		});
@@ -98,7 +98,7 @@ exports.mcfind = function(unm, cb) {
 	});
 	query.exec(function(err, ret) {
 		if (err) return handleError(err);
-		console.log("db finder" + ret);
+		// console.log("db finder" + ret);
 		//console.log('%s %s is a %s.', ret.retname, ret.password, ret.email); // Space Ghost is a talk show host.
 		cb(null, ret);
 		// cb(null, user);
@@ -153,9 +153,9 @@ exports.create = function(num, cb) {
 	});
 	newc.save(function(err) {
 	    if (err) {
-	        console.log('保存失败')
+	        // console.log('保存失败')
 	        return;
 	    }
-	    console.log('meow');
+	    // console.log('meow');
 	});
 }
