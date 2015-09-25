@@ -18,7 +18,9 @@
     "express-session": "1.9.1",
     "connect-flash": "0.1.1",
     "connect-mongo": "0.4.1",
-    "generic-pool": "2.1.1"
+    "generic-pool": "2.1.1",
+    "express": "4.10.2",
+    "mongoose": "4.1.8"
   },
   "devDependencies": {
     "hbs": "^3.1.1"
